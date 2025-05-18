@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #messageContainer {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        #messageInput {
+            width: 70%;
+            padding: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .received {
+            background-color: #e3f2fd;
+        }
+        .sent {
+            background-color: #e8f5e9;
+            text-align: right;
+        }
+        .error {
+            color: red;
+            margin: 10px 0;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .connected {
+            background-color: #c8e6c9;
+            color: #2e7d32;
+        }
+        .disconnected {
+            background-color: #ffcdd2;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <h1>WebSocket Test</h1>
+    <div id="status" class="status disconnected">Disconnected</div>
+    <div id="messageContainer"></div>
+    <div>
+        <input type="text" id="messageInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script src="client.js"></script>
+    <script>
+        const client = new WebSocketClient('wss://young8889.online:3000');
+        const messageContainer = document.getElementById('messageContainer');
+        const messageInput = document.getElementById('messageInput');
+        const statusDiv = document.getElementById('status');
+
+        function updateStatus(connected) {
+            statusDiv.className = `status ${connected ? 'connected' : 'disconnected'}`;
+            statusDiv.textContent = connected ? 'Connected' : 'Disconnected';
+        }
+
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = `Error: ${message}`;
+            messageContainer.appendChild(errorDiv);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+
+        client.connect().then(() => {
+            updateStatus(true);
+        }).catch(error => {
+            console.error('Failed to connect:', error);
+            showError('Failed to connect to server');
+            updateStatus(false);
+        });
+
+        client.onMessage(message => {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message received';
+            messageDiv.textContent = `Received: ${message.text}`;
+            messageContainer.appendChild(messageDiv);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        });
+
+        function sendMessage() {
+            const text = messageInput.value.trim();
+            if (text) {
+                try {
+                    client.send({ text });
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'message sent';
+                    messageDiv.textContent = `Sent: ${text}`;
+                    messageContainer.appendChild(messageDiv);
+                    messageContainer.scrollTop = messageContainer.scrollHeight;
+                    messageInput.value = '';
+                } catch (error) {
+                    console.error('Failed to send message:', error);
+                    showError('Failed to send message');
+                }
+            }
+        }
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // 监听连接状态变化
+        window.addEventListener('online', () => {
+            client.connect().catch(error => {
+                console.error('Reconnection failed:', error);
+                showError('Reconnection failed');
+                updateStatus(false);
+            });
+        });
+    </script>
+</body>
+</html> 

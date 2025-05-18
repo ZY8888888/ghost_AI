@@ -1,0 +1,11 @@
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":30,"version":"5.118.0","msg":"Ghost is running in production...","time":"2025-04-26T12:00:21.663Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":30,"version":"5.118.0","msg":"Your site is now available on http://your-domain.com/","time":"2025-04-26T12:00:21.665Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":30,"version":"5.118.0","msg":"Ctrl+C to shut down","time":"2025-04-26T12:00:21.666Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":30,"version":"5.118.0","msg":"Ghost server started in 0.522s","time":"2025-04-26T12:00:21.690Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":30,"version":"5.118.0","msg":"Bootstrap client was closed.","time":"2025-04-26T12:00:21.890Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":50,"version":"5.118.0","err":{"id":500,"domain":"http://your-domain.com","code":"ECONNRESET","name":"DatabaseError","statusCode":500,"level":"critical","message":"read ECONNRESET","help":"\"Unknown database error\"","stack":"Error: read ECONNRESET\n    at /var/www/ghost/versions/5.118.0/node_modules/knex-migrator/lib/database.js:57:19\n    at TCP.onStreamRead (node:internal/stream_base_commons:218:20)","hideStack":false},"msg":"read ECONNRESET","time":"2025-04-26T12:00:22.434Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":40,"version":"5.118.0","msg":"Ghost is shutting down","time":"2025-04-26T12:00:22.437Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":40,"version":"5.118.0","msg":"Ghost has shut down","time":"2025-04-26T12:00:22.439Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":40,"version":"5.118.0","msg":"Your site is now offline","time":"2025-04-26T12:00:22.439Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":40,"version":"5.118.0","msg":"Ghost was running for a few seconds","time":"2025-04-26T12:00:22.442Z","v":0}
+{"name":"Log","hostname":"VM-8-11-ubuntu","pid":8248,"level":30,"version":"5.118.0","msg":"Bootstrap client was closed.","time":"2025-04-26T12:00:22.445Z","v":0}

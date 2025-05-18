@@ -1,0 +1,13 @@
+{
+  "name": "sparkdesk-chat",
+  "version": "1.0.0",
+  "description": "SparkDesk Chat Integration",
+  "main": "server.js",
+  "dependencies": {
+    "ws": "^8.13.0",
+    "crypto": "^1.0.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+} 

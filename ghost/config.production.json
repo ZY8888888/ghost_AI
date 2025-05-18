@@ -1,0 +1,76 @@
+{
+  "url": "https://young8889.online",
+  "server": {
+    "port": 2368,
+    "host": "127.0.0.1"
+  },
+  "database": {
+    "client": "mysql",
+    "connection": {
+      "host": "127.0.0.1",
+      "user": "ghost_user",
+      "password": "@Zy020429",
+      "database": "ghost_db"
+    }
+  },
+  "caching": {
+    "301": {
+      "maxAge": 3600000
+    },
+    "frontend": {
+      "maxAge": 43200
+    },
+    "customRedirects": {
+      "maxAge": 3600000
+    },
+    "slugs": {
+      "maxAge": 3600000
+    }
+  },
+  "imageOptimization": {
+    "resize": true,
+    "quality": 80
+  },
+  "mail": {
+    "transport": "SMTP",
+    "options": {
+      "host": "smtp.qq.com",
+      "port": 465,
+      "secure": true,
+      "auth": {
+        "user": "1563483941@qq.com",
+        "pass": "wepsplbjqalzbaef"
+      }
+    },
+    "from": "1563483941@qq.com"
+  },
+  "spam": {
+    "user_login": {
+      "minWait": 600,
+      "maxWait": 600,
+      "freeRetries": 4
+    },
+    "global_login": {
+      "minWait": 600,
+      "maxWait": 600,
+      "freeRetries": 4
+    },
+    "global_block": {
+      "minWait": 3600,
+      "maxWait": 3600,
+      "freeRetries": 99
+    }
+  },
+  "logging": {
+    "transports": [
+      "file",
+      "stdout"
+    ]
+  },
+  "process": "systemd",
+  "paths": {
+    "contentPath": "/var/www/ghost/content"
+  },
+  "members_signup_access": "all",
+  "members_invite_only": "false"
+}
