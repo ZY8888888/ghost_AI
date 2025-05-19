@@ -111,7 +111,6 @@ Ghost 安装完成后会自动启动博客。
 '''server {
     listen 80;
     server_name yourdomain.com;
-
     location / {
         proxy_pass http://127.0.0.1:2368;
         proxy_set_header X-Real-IP $remote_addr;
